@@ -1,0 +1,15 @@
+{% extends "cms/base.html" %}
+{% load bootstrap4 %}
+
+{% block title %}ログイン{% endblock title %}
+
+{% block content %}
+  <div class="mt-4 mx-auto border bg-light" style="width:300px; padding:10px;">
+    <h4 class="mt-4 mb-5 border-bottom">ログイン</h4>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">ログイン</button>
+    </form>
+  </div>
+{% endblock content %}

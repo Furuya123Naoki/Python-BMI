@@ -1,0 +1,25 @@
+{% extends "cms/base.html" %}
+{% load bootstrap4 %}
+{% block title %}健康状態の登録・編集{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="jumbotron text-black">
+    <h4 class="mt-4 mb-5 border-bottom">BMIの登録・編集</h4>
+    {% if userhealth_id %}
+    <form action="{% url 'cms:userhealth_mod' userhealth_id=userhealth_id %}" method="post">
+    {% else %}
+    <form action="{% url 'cms:userhealth_add' %}" method="post">
+    {% endif %}
+      {% csrf_token %}
+      {% bootstrap_form form layout='horizontal' %}
+      <div class="form-group row">
+        <div class="offset-md-3 col-md-9">
+          <button type="submit" class="btn btn-primary">送信</button>
+        </div>
+      </div>
+    </form>
+    <a href="{% url 'cms:userhealth_list' %}" class="btn btn-secondary btn-sm">戻る</a>
+  </div>
+</div>
+{% endblock content %}
